@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Drums</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body style="background-color: lavender;">
+  <marquee>  <h4 style="font-weight:bolder; color:black; text-align:center; text-shadow:0px 1px black; font-size:20px; font-family: Copperplate, Papyrus, fantasy;">Press the specified keys to play drums and enjoy the sounds </h4></marquee>
+
+    <h1 style="font-weight:bolder; color:black; text-align:center; text-shadow:0px 1px black; font-size:40px; font-family: Copperplate, Papyrus, fantasy;">Play drums</h1>
+    <div class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd> <br>
+            <span class="sound">Clap</span>
+        </div>
+
+        <div data-key="83" class="key">
+            <kbd>S</kbd><br>
+            <span class="sound">Boom</span>
+        </div>
+
+        <div data-key="68" class="key">
+            <kbd>D</kbd> <br>
+            <span class="sound">Hihat</span>
+        </div>
+
+        <div data-key="70" class="key">
+            <kbd>F</kbd> <br>
+            <span class="sound">Kick</span>
+        </div>
+
+        <div data-key="71" class="key">
+            <kbd>G</kbd> <br>
+            <span class="sound">Openhat</span>
+        </div>
+
+        <div data-key="72" class="key">
+            <kbd>H</kbd> <br>
+            <span class="sound">Ride</span>
+        </div>
+
+        <div data-key="74" class="key">
+            <kbd>J</kbd> <br>
+            <span class="sound">Snare</span>
+        </div>
+
+        <div data-key="75" class="key">
+            <kbd>K</kbd><br>
+            <span class="sound">Tink</span>
+        </div>
+
+        <div data-key="76" class="key">
+            <kbd>L</kbd><br>
+            <span class="sound">Tom</span>
+        </div>
+    </div>
+
+
+
+
+    <audio data-key="65" src="audio/clap.wav"></audio>
+    <audio data-key="83" src="audio/boom.wav"></audio>
+    <audio data-key="68" src="audio/hihat.wav"></audio>
+    <audio data-key="70" src="audio/kick.wav"></audio>
+    <audio data-key="71" src="audio/openhat.wav"></audio>
+    <audio data-key="72" src="audio/ride.wav"></audio>
+    <audio data-key="74" src="audio/snare.wav"></audio>
+    <audio data-key="75" src="audio/tink.wav"></audio>
+    <audio data-key="76" src="audio/tom.wav"></audio>
+
+
+<script>
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  function playSound(e) {
+    const sound = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!sound) return;
+
+    key.classList.add('playing');
+    sound.currentTime = 0;
+    sound.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+</script>
+
+</body>
+
+</html>

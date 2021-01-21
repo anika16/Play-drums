@@ -1,0 +1,50 @@
+html , body{
+    margin: 0;
+    padding: 0;
+    font-family: Copperplate, Papyrus, fantasy;
+    background-image: url('drums.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+   background-size: 100% 100%;
+
+}
+
+html{
+    font-size: 10px;
+    background-color:#ccebff;
+    background-size: cover;
+}
+.keys{
+    min-height: 100vh;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.key{
+    width: 70px;
+    margin: 2px;
+    padding: 10px 15px;
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 1px;
+    text-align: center;
+    background: rgb(0, 0,0, 0.5);
+    text-shadow: 0 0 2px white;
+    transition:all 0.7s ease;
+}
+kbd{
+    display: block;
+    font-size: 30px;
+    color: aliceblue;
+}
+.sound{
+    color:#ffc600;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.playing{
+    transform: scale(1.1);
+    border-color:  yellow;
+    box-shadow: 0 0 2px #ffc600;
+}
